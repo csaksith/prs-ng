@@ -20,6 +20,7 @@ import { ProductCreateComponent } from './feature/product/product-create/product
 import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
 import { ProductDetailComponent } from './feature/product/product-detail/product-detail.component';
 import { MenuComponent } from './core/menu/menu.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MenuComponent } from './core/menu/menu.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,17 +9,8 @@
     /></a>
 
     <ul>
-      <li>
-        <a routerLink="/user-list">Users</a>
-      </li>
-      <li>
-        <a routerLink="/vendor-list">Vendors</a>
-      </li>
-      <li>
-        <a routerLink="/product-list">Products</a>
-      </li>
-      <li>
-        <a routerLink="/request-list">Requests</a>
+      <li *ngFor="let item of menuItems" title="{{item.tooltip}}"> 
+        <a routerLink="{{item.href}}">{{item.display}}</a> 
       </li>
     </ul>
   </div>
