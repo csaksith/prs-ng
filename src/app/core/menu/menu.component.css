@@ -1,0 +1,25 @@
+.nav {
+  width: 100%;
+}
+li {
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+}
+a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.861);
+}
+a:hover {
+  color: rgba(111, 111, 111, 0.861);
+  text-decoration: underline;
+}
+.navbar-brand {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.navbar-brand img {
+  object-fit: contain;
+  vertical-align: middle;
+}
