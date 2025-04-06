@@ -1,1 +1,50 @@
-<p>user-create works!</p>
+<div class="p-4">
+  <h1>{{ title }}</h1>
+  <table>
+    <tr>
+      <td>Username:</td>
+      <td>
+        <input [(ngModel)]="newUser.username" type="text" />
+      </td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td>
+        <input [(ngModel)]="newUser.password" type="text" />
+      </td>
+    </tr>
+    <tr>
+      <td>First Name:</td>
+      <td>
+        <input [(ngModel)]="newUser.firstName" type="text" />
+      </td>
+    </tr>
+    <tr>
+      <td>Last Name:</td>
+      <td>
+        <input [(ngModel)]="newUser.lastName" type="text" />
+      </td>
+    </tr>
+    <tr>
+      <td>Phone Number:</td>
+      <td>
+        <input [(ngModel)]="newUser.phoneNumber" type="text" />
+      </td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>
+        <input [(ngModel)]="newUser.email" type="email" />
+      </td>
+    </tr>
+    <tr>
+      <input [(ngModel)]="newUser.reviewer" type="checkbox" />
+      Reviewer
+    </tr>
+    <tr>
+      <input [(ngModel)]="newUser.admin" type="checkbox" />
+      Admin
+    </tr>
+  </table>
+  <button (click)="addUser()">Add User</button>
+</div>
