@@ -14,7 +14,8 @@ export class UserCreateComponent implements OnInit,OnDestroy{
   title: string = 'User-Create';
   newUser: User = new User();
   subscription!:Subscription;
-  constructor(private userSvc: UserService, private router: Router) {}
+  constructor(
+    private userSvc: UserService, private router: Router) {}
   ngOnInit(): void {}
   
   ngOnDestroy(): void {
