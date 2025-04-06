@@ -18,33 +18,33 @@ import { VendorEditComponent } from './feature/vendor/vendor-edit/vendor-edit.co
 import { VendorListComponent } from './feature/vendor/vendor-list/vendor-list.component';
 
 const routes: Routes = [
-// user
-{path: 'user-list', component: UserListComponent },
-{path: 'user-create', component: UserCreateComponent },
-{path: 'user-edit', component: UserEditComponent },
-{path: 'user-detail', component: UserDetailComponent },
-// vendor
-{path: 'vendor-list', component: VendorListComponent },
-{path: 'vendor-create', component: VendorCreateComponent },
-{path: 'vendor-edit', component: VendorEditComponent },
-{path: 'vendor-detail', component: VendorDetailComponent },
-// request
-{path: 'request-list', component: RequestListComponent },
-{path: 'request-create', component: RequestCreateComponent },
-{path: 'request-edit', component: RequestEditComponent },
-{path: 'request-detail', component: RequestDetailComponent },
-// product
-{path: 'product-list', component: ProductListComponent },
-{path: 'product-create', component: ProductCreateComponent },
-{path: 'product-edit', component: ProductEditComponent },
-{path: 'product-detail', component: ProductDetailComponent },
-// default route
-{ path: '', redirectTo: 'user-list', pathMatch: 'full' }, // redirect to user list
-{path: '**', redirectTo: 'user-list' } // wildcard route for a 404 page
+  // user
+  { path: 'user-list', component: UserListComponent },
+  { path: 'user-create', component: UserCreateComponent },
+  { path: 'user-edit/:id', component: UserEditComponent },
+  { path: 'user-detail/:id', component: UserDetailComponent },
+  // vendor
+  { path: 'vendor-list', component: VendorListComponent },
+  { path: 'vendor-create', component: VendorCreateComponent },
+  { path: 'vendor-edit/:id', component: VendorEditComponent },
+  { path: 'vendor-detail/:id', component: VendorDetailComponent },
+  // request
+  { path: 'request-list', component: RequestListComponent },
+  { path: 'request-create', component: RequestCreateComponent },
+  { path: 'request-edit/:id', component: RequestEditComponent },
+  { path: 'request-detail/:id', component: RequestDetailComponent },
+  // product
+  { path: 'product-list', component: ProductListComponent },
+  { path: 'product-create', component: ProductCreateComponent },
+  { path: 'product-edit/:id', component: ProductEditComponent },
+  { path: 'product-detail/:id', component: ProductDetailComponent },
+  // default route
+  { path: '', redirectTo: 'user-list', pathMatch: 'full' }, // redirect to user list
+  { path: '**', redirectTo: 'user-list' }, // wildcard route for a 404 page
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

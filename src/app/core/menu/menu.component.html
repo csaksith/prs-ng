@@ -1,16 +1,12 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark px-3">
   <div class="d-flex align-items-center">
     <a class="navbar-brand d-flex align-items-center" routerLink="/user-list">
-      <img
-        src="/images/prs-logo.png"
-        alt="Logo"
-        width="60"
-        height="60"
+      <img src="/images/prs-logo.png" alt="Logo" width="60" height="60"
     /></a>
 
     <ul>
-      <li *ngFor="let item of menuItems" title="{{item.tooltip}}"> 
-        <a routerLink="{{item.href}}">{{item.display}}</a> 
+      <li *ngFor="let item of menuItems" title="{{ item.tooltip }}">
+        <a routerLink="{{ item.href }}">{{ item.display }}</a>
       </li>
     </ul>
   </div>
