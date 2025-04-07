@@ -1,12 +1,12 @@
 import { Vendor } from './vendor.model';
 
 export class Product {
-  'id': number;
+  id: number;
   partNumber: string;
-  'name': string;
+  name: string;
   price: number;
-  'unit': string;
-  'photoPath': string;
+  unit: string;
+  photoPath: string;
   vendor: Vendor;
 
   constructor(
