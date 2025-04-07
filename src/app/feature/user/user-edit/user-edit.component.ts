@@ -47,6 +47,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
     this.userSvc.update(this.user).subscribe({
       next: (resp) => {
         this.user = resp;
+        console.log('User updated successfully:', this.user);
         this.router.navigateByUrl('/user-list');
       },
       error: (err) => {

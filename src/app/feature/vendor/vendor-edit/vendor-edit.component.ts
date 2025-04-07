@@ -38,13 +38,13 @@ export class VendorEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+this.subscription.unsubscribe();  }
 
   saveVendor() {
     this.vendorSvc.update(this.vendor).subscribe({
       next: (resp) => {
         this.vendor = resp;
+        console.log('Vendor updated successfully:', this.vendor);
         this.router.navigateByUrl('/vendor-list');
       },
       error: (err) => {
