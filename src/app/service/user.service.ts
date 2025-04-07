@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { User } from '../model/user.model';
@@ -10,6 +9,7 @@ const URL = 'http://localhost:8080/api/users';
   providedIn: 'root',
 })
 export class UserService {
+  
   constructor(private http: HttpClient) {}
 
   list(): Observable<User[]> {
