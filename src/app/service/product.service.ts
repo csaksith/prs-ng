@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../model/product.model';
-const URL = 'http://localhost:8080/api/products';
+const URL = 'http://localhost:8080/api/products/';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,11 +10,11 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   list(): Observable<Product[]> {
-    return this.http.get<Product[]>(URL + '/') as Observable<Product[]>;
+    return this.http.get<Product[]>(URL) as Observable<Product[]>;
   }
 
   add(product: Product): Observable<Product> {
-    return this.http.post(URL + '/', product) as Observable<Product>;
+    return this.http.post(URL, product) as Observable<Product>;
   }
 
   update(product: Product): Observable<Product> {
@@ -29,6 +29,6 @@ export class ProductService {
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(URL + '/' + id) as Observable<Product>;
+    return this.http.delete(URL + id) as Observable<Product>;
   }
 }
