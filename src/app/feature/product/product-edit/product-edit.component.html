@@ -1,1 +1,63 @@
-<p>product-edit works!</p>
+<div class="p-4">
+    <span class="component-title">{{ title }}</span>
+    <p *ngIf="!product">Loading...</p>
+    <div *ngIf="product">
+      <main class="single">
+        <table class="table table-sm">
+          <tr>
+            <td>Vendor:</td>
+            <td>
+              <select
+                [(ngModel)]="product.vendor" class="rounded" [compareWith]="compVendor">
+                <option *ngFor="let v of vendors" [ngValue]="v">
+                  {{ v.name }}
+                </option>
+              </select>
+            </td>
+          </tr>
+            <tr>
+                <td>Part Number:</td>
+                <td>
+                <input
+                    [(ngModel)]="product.partNumber" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td>
+                <input
+                    [(ngModel)]="product.name" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td>
+                <input
+                    [(ngModel)]="product.price" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Unit:</td>
+                <td>
+                <input
+                    [(ngModel)]="product.unit" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Photo Path:</td>
+                <td>
+                <input
+                    [(ngModel)]="product.photoPath" type="text" />
+                </td>
+            </tr>
+
+          
+        </table>
+      </main>
+      <span>
+        <button (click)="saveProduct()" class="btn btn-sm btn-primary">Save Product</button>
+        <a routerLink="/product-list" class="btn btn-sm btn-secondary">Cancel</a>
+      </span>
+    </div>
+  </div>
+  

@@ -18,14 +18,11 @@ export class ProductService {
   }
 
   update(product: Product): Observable<Product> {
-    return this.http.put(
-      URL + '/' + product.id,
-      product
-    ) as Observable<Product>;
+    return this.http.put(URL + product.id, product) as Observable<Product>;
   }
 
   getById(id: number): Observable<Product> {
-    return this.http.get<Product>(URL + '/' + id) as Observable<Product>;
+    return this.http.get<Product>(URL + id) as Observable<Product>;
   }
 
   delete(id: number): Observable<any> {
