@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.userSvc.list().subscribe((resp) => {
       this.users = resp;
-      this.welcomeMsg=`Welcome ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
+      this.welcomeMsg=`Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
       this.loggedInUser = this.systemSvc.loggedInUser;
       this.isAdmin = this.loggedInUser.admin;
     });
