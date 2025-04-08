@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { RequestService } from '../../../service/request.service';
-import { Request } from '../../../model/Request.model';
+import { Request } from '../../../model/request.model';
 
 @Component({
   selector: 'app-request-detail',

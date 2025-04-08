@@ -1,1 +1,65 @@
-<p>request-edit works!</p>
+<div class="p-4">
+  <span class="component-title">{{ title }}</span>
+  <p *ngIf="!request">Loading...</p>
+  <div *ngIf="request">
+    <main class="single">
+      <table class="table table-sm">
+        <tr>
+          <td>User:</td>
+          <td>
+            <select
+              [(ngModel)]="request.user" name="user"
+              class="rounded"
+              [compareWith]="compUser"
+            >
+              <option *ngFor="let u of users" [ngValue]="u">
+                {{ u.username }}
+              </option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+            <td>Description:</td>
+            <td>
+              <input name="description" type="text" [(ngModel)]="request.description" required/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Justification:</td>
+            <td>
+              <input name="justification" type="text" [(ngModel)]="request.justification" required/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Date Needed:</td>
+            <td>
+              <input name="dateNeeded" type="date" [(ngModel)]="request.dateNeeded" required/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Delivery Mode:</td>
+            <td>
+              <select 
+                [(ngModel)]="request.deliveryMode" name="deliveryMode"
+                class="rounded">
+               <option *ngFor="let dm of deliveryModes" [ngValue]="dm">
+                {{ dm }}
+              </option>
+              </select>
+            </td>
+        </tr>
+
+      </table>
+    </main>
+    <span>
+      <button (click)="saveRequest()" class="btn btn-sm btn-primary">
+        Save Request
+      </button>
+      <a routerLink="/request-list" class="btn btn-sm btn-secondary">Cancel</a>
+    </span>
+  </div>
+</div>

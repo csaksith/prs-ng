@@ -7,57 +7,49 @@
           <tr>
             <td>Username:</td>
             <td>
-              <input [(ngModel)]="user.username" class="rounded" type="text" />
+              <input name="username" [(ngModel)]="user.username" class="rounded" type="text" />
             </td>
           </tr>
           <tr>
             <td>Password:</td>
             <td>
-              <input [(ngModel)]="user.password" class="rounded" type="text" />
+              <input name="password" [(ngModel)]="user.password" class="rounded" type="text" />
             </td>
           </tr>
           <tr>
             <td>First Name:</td>
             <td>
-              <input [(ngModel)]="user.firstName" class="rounded" type="text" />
+              <input name="firstName" [(ngModel)]="user.firstName" class="rounded" type="text" />
             </td>
           </tr>
           <tr>
             <td>Last Name:</td>
             <td>
-              <input [(ngModel)]="user.lastName" class="rounded" type="text" />
+              <input name="lastName" [(ngModel)]="user.lastName" class="rounded" type="text" />
             </td>
           </tr>
           <tr>
             <td>Phone Number:</td>
             <td>
-              <input
-                [(ngModel)]="user.phoneNumber"
-                class="rounded"
-                type="text"
-              />
+              <input name="phoneNumber" [(ngModel)]="user.phoneNumber" class="rounded" type="text" />
             </td>
           </tr>
           <tr>
             <td>Email:</td>
             <td>
-              <input [(ngModel)]="user.email" class="rounded" type="email" />
+              <input name="email" [(ngModel)]="user.email" class="rounded" type="email" />
             </td>
           </tr>
           <tr>
             <td>Reviewer?</td>
             <td>
-              <input
-                [(ngModel)]="user.reviewer"
-                class="rounded"
-                type="checkbox"
-              />
+              <input name="reviewer" [(ngModel)]="user.reviewer" class="rounded" type="checkbox" />
             </td>
           </tr>
           <tr>
             <td>Admin?</td>
             <td>
-              <input [(ngModel)]="user.admin" class="rounded" type="checkbox" />
+              <input name="admin" [(ngModel)]="user.admin" class="rounded" type="checkbox" />
             </td>
           </tr>
         </table>
