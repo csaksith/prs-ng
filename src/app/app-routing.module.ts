@@ -16,8 +16,10 @@ import { VendorCreateComponent } from './feature/vendor/vendor-create/vendor-cre
 import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-detail.component';
 import { VendorEditComponent } from './feature/vendor/vendor-edit/vendor-edit.component';
 import { VendorListComponent } from './feature/vendor/vendor-list/vendor-list.component';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/user-login', pathMatch: 'full' }, // redirect to user login
   // user
   { path: 'user-list', component: UserListComponent },
   { path: 'user-create', component: UserCreateComponent },
@@ -39,7 +41,7 @@ const routes: Routes = [
   { path: 'product-edit/:id', component: ProductEditComponent },
   { path: 'product-detail/:id', component: ProductDetailComponent },
   // default route
-  { path: '', redirectTo: 'user-list', pathMatch: 'full' }, // redirect to user list
+  { path: 'user-login', component: UserLoginComponent }, // login page (for now, just user list)
   { path: '**', redirectTo: 'user-list' }, // wildcard route for a 404 page
 ];
 

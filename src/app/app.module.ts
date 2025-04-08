@@ -22,6 +22,7 @@ import { ProductDetailComponent } from './feature/product/product-detail/product
 import { MenuComponent } from './core/menu/menu.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     ProductCreateComponent,
     ProductEditComponent,
     ProductDetailComponent,
-    MenuComponent
+    MenuComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
