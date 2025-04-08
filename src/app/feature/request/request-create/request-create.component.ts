@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { RequestService } from '../../../service/request.service';
 import { UserService } from '../../../service/user.service';
 import { Request } from '../../../model/request.model';
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-request-create',
@@ -17,15 +18,21 @@ export class RequestCreateComponent implements OnInit, OnDestroy {
   newRequest: Request = new Request();
   subscription!: Subscription;
   users!: User[];
+  welcomeMsg!: string;
   deliveryModes: string[] = ['Pickup', 'Mail'];
 
   constructor(
     private requestSvc: RequestService,
     private userSvc: UserService,
-    private router: Router
+    private router: Router,
+    private systemSvc: SystemService
   ) {}
 
   ngOnInit(): void {
+    // check if user is logged in
+    this.newRequest.user = this.systemSvc.loggedInUser;
+    this.welcomeMsg = `Welcome, ${this.newRequest.user.firstName} ${this.newRequest.user.lastName}`;
+
     // populate users
     this.subscription = this.userSvc.list().subscribe({
       next: (resp) => {
@@ -46,9 +53,9 @@ export class RequestCreateComponent implements OnInit, OnDestroy {
       description: this.newRequest.description,
       justification: this.newRequest.justification,
       dateNeeded: this.newRequest.dateNeeded,
-      deliveryMode: this.newRequest.deliveryMode
+      deliveryMode: this.newRequest.deliveryMode,
     };
-   console.log('DTO sent: ', dto);
+    console.log('DTO sent: ', dto);
     this.subscription = this.requestSvc.add(dto).subscribe({
       next: (resp) => {
         this.router.navigateByUrl('/request-list');

@@ -1,47 +1,72 @@
 <div class="p-4">
-    <h1>{{ title }}</h1>
-      <table>
-        <tr>
-          <td>User:</td>
-          <td>
-            <select [(ngModel)]="newRequest.user" name="user" [compareWith]="compUser">
-              <option *ngFor="let u of users" [ngValue]="u">
-                {{ u.username }}
-              </option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Description:</td>
-          <td>
-            <input name="description" [(ngModel)]="newRequest.description" type="text" />
-          </td>
-        </tr>
-        <tr>
-          <td>Justification:</td>
-          <td>
-            <input name="justification" [(ngModel)]="newRequest.justification" type="text" />
-          </td>
-        </tr>
-        <tr>
-          <td>Date Needed:</td>
-          <td>
-            <input name="dateNeeded" [(ngModel)]="newRequest.dateNeeded" type="date" />
-          </td>
-        </tr>
-        <tr>
-          <td>Delivery Mode:</td>
-          <td>
-            <select 
-                [(ngModel)]="newRequest.deliveryMode" name="deliveryMode"
-                class="rounded">
-               <option *ngFor="let dm of deliveryModes" [ngValue]="dm">
-                {{ dm }}
-              </option>
-              </select>
-          </td>
-        </tr>
-      </table>
-      <button (click)="addRequest()">Add Request</button>
-  </div>
-  
+  <span class="page-title font-weight-bold font-italic">{{ title }} </span>
+  <span
+    style="
+      float: right;
+      padding-right: 30px;
+      font-style: italic;
+      font-weight: bold;
+    "
+    >{{ welcomeMsg }}</span
+  >
+  <table>
+    <tr>
+      <td>User:</td>
+      <td>
+        <input
+          name="user"
+          [value]="newRequest.user.firstName + ' ' + newRequest.user.lastName"
+          readonly
+          style="background-color: rgb(218, 218, 218)"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td>
+        <input
+          name="description"
+          [(ngModel)]="newRequest.description"
+          type="text"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Justification:</td>
+      <td>
+        <input
+          name="justification"
+          [(ngModel)]="newRequest.justification"
+          type="text"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Date Needed:</td>
+      <td>
+        <input
+          name="dateNeeded"
+          [(ngModel)]="newRequest.dateNeeded"
+          type="date"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Delivery Mode:</td>
+      <td>
+        <select
+          [(ngModel)]="newRequest.deliveryMode"
+          name="deliveryMode"
+          class="rounded"
+        >
+          <option *ngFor="let dm of deliveryModes" [ngValue]="dm">
+            {{ dm }}
+          </option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  <button (click)="addRequest()" class="btn btn-sm btn-primary">Create</button>  
+<a routerLink="/request-list" class="btn btn-sm btn-secondary">Cancel</a>
+        
+</div>
