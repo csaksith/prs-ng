@@ -15,7 +15,7 @@ export class SystemService {
     if (this.loggedInUser.id == 0) {
       console.log('User not authenticated, redirecting to login page...');
       // redirect to login page
-      this.router.navigate(['/login']);
+      this.router.navigate(['/user-login']);
     }
   }
 }

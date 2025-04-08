@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../model/user.model';
 import { UserService } from '../../../service/user.service';
-
+import{ SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-user-login',
   standalone: false,
@@ -17,12 +17,17 @@ export class UserLoginComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   user!: User;
   message: string = '';
+
   constructor(
     private userSvc: UserService,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private systemSvc: SystemService
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userLogin.username= 'gelbymishi';
+    this.userLogin.password='misha123';
+  }
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
@@ -35,6 +40,8 @@ export class UserLoginComponent implements OnInit, OnDestroy {
       next: (resp) => {
         // successful login
         this.user = resp;
+        // store the user in the system service
+        this.systemSvc.loggedInUser = resp;
         console.log('User logged in successfully. Welcome ', this.user);
         // navigate to the user list page
         this.router.navigateByUrl('/user-list');

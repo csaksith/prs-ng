@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { UserService } from '../../../service/user.service';
 import { User } from '../../../model/user.model';
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-user-list',
@@ -13,11 +14,17 @@ export class UserListComponent implements OnInit, OnDestroy {
   title: string = 'User-List';
   users!: User[];
   subscription!: Subscription;
-  constructor(private userSvc: UserService) {}
+  loggedInUser!: User;
+  isAdmin: boolean = false;
+  welcomeMsg!:string;
+  constructor(private userSvc: UserService, private systemSvc: SystemService) {}
 
   ngOnInit(): void {
     this.subscription = this.userSvc.list().subscribe((resp) => {
       this.users = resp;
+      this.welcomeMsg=`Welcome ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
+      this.loggedInUser = this.systemSvc.loggedInUser;
+      this.isAdmin = this.loggedInUser.admin;
     });
   }
 
