@@ -1,17 +1,17 @@
 import { User } from './user.model';
 
 export class Request {
-  id: number;
-  user: User;
-  requestNumber: string;
-  description: string;
-  justification: string;
-  dateNeeded: string;
-  deliveryMode: string;
-  status: string;
-  total: number;
-  submittedDate: string;
-  reasonForRejection: string;
+  id: number = 0;
+  user: User = new User();
+  requestNumber: string = '';
+  description: string = '';
+  justification: string = '';
+  dateNeeded: string = '';
+  deliveryMode: string = '';
+  status: string = '';
+  total: number = 0;
+  submittedDate: string = '';
+  reasonForRejection: string = '';
 
   constructor(
     id: number = 0,

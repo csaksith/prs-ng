@@ -12,7 +12,7 @@ export class UserService {
   
   constructor(private http: HttpClient) {}
 
-  list(): Observable<User[]> {
+  list(p0?: number): Observable<User[]> {
     return this.http.get<User[]>(URL + '/') as Observable<User[]>;
   }
 

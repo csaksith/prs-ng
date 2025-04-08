@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Request } from '../model/request.model';
-
+import { RequestDto } from '../model/requestDto.model';
 const URL = 'http://localhost:8080/api/requests';
 
 @Injectable({
@@ -15,8 +15,8 @@ export class RequestService {
     return this.http.get<Request[]>(URL + '/') as Observable<Request[]>;
   }
 
-  add(request: Request): Observable<Request> {
-    return this.http.post(URL, request) as Observable<Request>;
+  add(dto: RequestDto): Observable<Request> {
+    return this.http.post(URL, dto) as Observable<Request>;
   }
 
   update(request: Request): Observable<Request> {
