@@ -17,6 +17,7 @@ import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-det
 import { VendorEditComponent } from './feature/vendor/vendor-edit/vendor-edit.component';
 import { VendorListComponent } from './feature/vendor/vendor-list/vendor-list.component';
 import { UserLoginComponent } from './feature/user/user-login/user-login.component';
+import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/user-login', pathMatch: 'full' }, // redirect to user login
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'request-create', component: RequestCreateComponent },
   { path: 'request-edit/:id', component: RequestEditComponent },
   { path: 'request-detail/:id', component: RequestDetailComponent },
+  { path: 'request-lines/:id', component: RequestLinesComponent },
   // product
   { path: 'product-list', component: ProductListComponent },
   { path: 'product-create', component: ProductCreateComponent },

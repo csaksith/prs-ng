@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Product } from '../../../model/product.model';
 import { ProductService } from '../../../service/product.service';
+import { User } from '../../../model/user.model';
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,11 +17,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   productId!: number;
   product!: Product;
   subscription!: Subscription;
-
+  loggedInUser!: User;
+  isAdmin: boolean = false;
+  welcomeMsg!: string;
   constructor(
     private productSvc: ProductService,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private systemSvc: SystemService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +36,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         // corrected service call from userSvc to productSvc
         next: (resp) => {
           this.product = resp;
+          this.welcomeMsg = `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
+          this.loggedInUser = this.systemSvc.loggedInUser;
+          this.isAdmin = this.loggedInUser.admin;
         },
         error: (err) => {
           console.error('Error fetching product:', err);
@@ -38,7 +46,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       });
     });
   }
-  
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

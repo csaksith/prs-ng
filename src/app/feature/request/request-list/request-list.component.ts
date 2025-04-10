@@ -9,16 +9,19 @@ import { SystemService } from '../../../service/system.service';
   selector: 'app-request-list',
   standalone: false,
   templateUrl: './request-list.component.html',
-  styleUrl: './request-list.component.css'
+  styleUrl: './request-list.component.css',
 })
-export class RequestListComponent implements OnInit, OnDestroy{
+export class RequestListComponent implements OnInit, OnDestroy {
   title: string = 'Request-List';
   requests!: Request[];
   subscription!: Subscription;
   loggedInUser!: User;
-    isAdmin: boolean = false;
-    welcomeMsg!:string;
-  constructor(private requestSvc: RequestService,private systemSvc: SystemService) {}
+  isAdmin: boolean = false;
+  welcomeMsg!: string;
+  constructor(
+    private requestSvc: RequestService,
+    private systemSvc: SystemService
+  ) {}
   ngOnInit(): void {
     this.subscription = this.requestSvc.list().subscribe((resp) => {
       this.requests = resp;
@@ -44,6 +47,4 @@ export class RequestListComponent implements OnInit, OnDestroy{
       },
     });
   }
-
-
 }

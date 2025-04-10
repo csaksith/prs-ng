@@ -1,5 +1,7 @@
 <div class="p-4">
-  <h1>{{ title }}</h1>
+  <span class="fw-bold fst-italic">[{{ title }}] </span>
+  <span> | <a class="return-to-link" routerLink="/user-list">Return to List</a></span>
+
   <table>
     <tr>
       <td>Username:</td>
@@ -28,7 +30,11 @@
     <tr>
       <td>Phone Number:</td>
       <td>
-        <input name="phoneNumber" [(ngModel)]="newUser.phoneNumber" type="text" />
+        <input
+          name="phoneNumber"
+          [(ngModel)]="newUser.phoneNumber"
+          type="text"
+        />
       </td>
     </tr>
     <tr>
@@ -46,5 +52,6 @@
       Admin
     </tr>
   </table>
-  <button (click)="addUser()">Add User</button>
+  <button (click)="addUser()" class="btn btn-sm btn-primary">Create</button>
+  <a routerLink="/user-list" class="btn btn-sm btn-secondary">Cancel</a>
 </div>

@@ -1,7 +1,7 @@
 <div class="p-4">
   <section class="heading">
-    <span class="page-title font-weight-bold font-italic">{{ title }} </span>
-    <a routerLink="/vendor-create">
+    <span class="fw-bold fst-italic">[{{ title }}] </span>
+    <a *ngIf="this.isAdmin" routerLink="/vendor-create">
       <img width="20" height="20" src="images/add-icon.png" title="Add New" />
     </a>
     <span

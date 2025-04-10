@@ -1,6 +1,6 @@
 <div *ngIf="product" class="component">
   <section class="heading">
-    <span class="page-title font-weight-bold font-italic">{{ title }}</span>
+    <span class="fw-bold fst-italic">[{{ title }}] </span>
     <span> | <a routerLink="/product-list">Return to List</a></span>
   </section>
   <main class="single">
@@ -80,14 +80,18 @@
   <span>
     <span
       ><a
+        *ngIf="this.isAdmin"
         routerLink="/product-edit/{{ product.id }}"
         class="btn btn-sm btn-warning"
         >Edit</a
       ></span
     >
     <span>
-      |
-      <button (click)="deleteProduct()" class="btn btn-sm btn-danger">
+      <button
+        *ngIf="this.isAdmin"
+        (click)="deleteProduct()"
+        class="btn btn-sm btn-danger"
+      >
         Delete
       </button></span
     >

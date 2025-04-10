@@ -23,6 +23,7 @@ import { MenuComponent } from './core/menu/menu.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UserLoginComponent } from './feature/user/user-login/user-login.component';
+import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { UserLoginComponent } from './feature/user/user-login/user-login.compone
     ProductEditComponent,
     ProductDetailComponent,
     MenuComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    RequestLinesComponent
   ],
   imports: [
     BrowserModule,

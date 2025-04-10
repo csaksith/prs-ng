@@ -19,7 +19,7 @@ export class UserCreateComponent implements OnInit,OnDestroy{
   ngOnInit(): void {}
   
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
   
   addUser(){

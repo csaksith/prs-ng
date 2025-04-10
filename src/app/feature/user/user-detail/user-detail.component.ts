@@ -3,6 +3,7 @@ import { User } from '../../../model/user.model';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { UserService } from '../../../service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -15,11 +16,14 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   userId!: number;
   user!: User;
   subscription!: Subscription;
-
+  loggedInUser!: User;
+  isAdmin: boolean = false;
+  welcomeMsg!:string
   constructor(
     private userSvc: UserService,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private systemSvc: SystemService
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +34,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       this.subscription = this.userSvc.getById(this.userId).subscribe({
         next: (resp) => {
           this.user = resp;
+          this.welcomeMsg=`Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
+          this.loggedInUser = this.systemSvc.loggedInUser;
+          this.isAdmin = this.loggedInUser.admin;
         },
         error: (err) => {
           console.error('Error fetching user:', err);

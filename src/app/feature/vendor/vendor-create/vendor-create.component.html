@@ -1,5 +1,7 @@
 <div class="p-4">
-  <h1>{{ title }}</h1>
+  <span class="fw-bold fst-italic">[{{ title }}] </span>
+  <span> | <a class="return-to-link" routerLink="/user-list">Return to List</a></span>
+
   <table>
     <tr>
       <td>Code:</td>
@@ -50,5 +52,7 @@
       </td>
     </tr>
   </table>
-  <button (click)="addVendor()">Add Vendor</button>
+  <button (click)="addVendor()" class="btn btn-sm btn-primary">Create</button>
+  <a routerLink="/vendor-list" class="btn btn-sm btn-secondary">Cancel</a>
+
 </div>

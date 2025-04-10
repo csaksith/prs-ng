@@ -1,6 +1,6 @@
 <div *ngIf="vendor" class="component">
   <section class="heading">
-    <span class="page-title font-weight-bold font-italic">{{ title }}</span>
+    <span class="fw-bold fst-italic">[{{ title }}] </span>
     <span> | <a routerLink="/vendor-list">Return to List</a></span>
   </section>
   <main class="single">
@@ -102,14 +102,18 @@
   <span>
     <span
       ><a
+        *ngIf="this.isAdmin"
         routerLink="/vendor-edit/{{ vendor.id }}"
         class="btn btn-sm btn-warning"
         >Edit</a
       ></span
     >
     <span>
-      |
-      <button (click)="deleteVendor()" class="btn btn-sm btn-danger">
+      <button
+        *ngIf="this.isAdmin"
+        (click)="deleteVendor()"
+        class="btn btn-sm btn-danger"
+      >
         Delete
       </button></span
     >

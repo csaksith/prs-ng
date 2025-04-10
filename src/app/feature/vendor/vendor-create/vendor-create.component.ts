@@ -17,7 +17,7 @@ export class VendorCreateComponent implements OnInit, OnDestroy {
   constructor(private vendorSvc: VendorService, private router: Router) {}
   ngOnInit(): void {}
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
   addVendor() {
     this.subscription = this.vendorSvc.add(this.newVendor).subscribe((resp) => {

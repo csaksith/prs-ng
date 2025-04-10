@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Vendor } from '../model/vendor.model';
-
 const URL = 'http://localhost:8080/api/vendors';
 
 @Injectable({

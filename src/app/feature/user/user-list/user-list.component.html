@@ -1,7 +1,7 @@
 <div class="p-4">
   <section class="heading">
-    <span class="page-title font-weight-bold font-italic">{{ title }} </span>
-    <a routerLink="/user-create">
+    <span class="fw-bold fst-italic">[{{ title }}] </span>
+    <a *ngIf="this.isAdmin" routerLink="/user-create">
       <img width="20" height="20" src="images/add-icon.png" title="Add New" />
     </a>
     <span
@@ -36,8 +36,8 @@
         <td>{{ u.lastName }}</td>
         <td>{{ u.phoneNumber }}</td>
         <td>{{ u.email }}</td>
-        <td>{{ u.reviewer }}</td>
-        <td>{{ u.admin }}</td>
+        <td><input type="checkbox" [checked]=" u.reviewer" disabled/></td>
+        <td><input type="checkbox" [checked]=" u.admin " disabled/></td>
         <td>
           <a *ngIf="this.isAdmin" routerLink="/user-edit/{{ u.id }}">
             <img

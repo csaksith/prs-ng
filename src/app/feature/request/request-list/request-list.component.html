@@ -1,6 +1,6 @@
 <div class="p-4">
   <section class="heading">
-    <span class="page-title font-weight-bold font-italic">{{ title }} </span>
+    <span class="fw-bold fst-italic">[{{ title }}] </span>
     <a routerLink="/request-create">
       <img width="20" height="20" src="images/add-icon.png" title="Add New" />
     </a>
@@ -56,8 +56,17 @@
               width="20"
               height="20"
               title="Request-Detail"
-            /></a
-          ><a *ngIf="this.isAdmin">|
+            />|</a
+          >
+          <a routerLink="/request-lines/{{ r.id }}">
+            <img
+              src="images/lines.png"
+              width="20"
+              height="20"
+              title="Approve Request"
+              
+            /></a>
+          <a *ngIf="this.isAdmin">|
             <img
               src="images/delete.jpg"
               width="20"

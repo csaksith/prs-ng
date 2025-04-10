@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../model/user.model';
 import { UserService } from '../../../service/user.service';
-import{ SystemService } from '../../../service/system.service';
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-user-login',
   standalone: false,
@@ -25,8 +25,8 @@ export class UserLoginComponent implements OnInit, OnDestroy {
     private systemSvc: SystemService
   ) {}
   ngOnInit(): void {
-    this.userLogin.username= 'gelbymishi';
-    this.userLogin.password='misha123';
+    this.userLogin.username = 'gelbymishi';
+    this.userLogin.password = 'misha123';
   }
   ngOnDestroy(): void {
     if (this.subscription) {
@@ -48,8 +48,8 @@ export class UserLoginComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         // invalid login
-        console.error('Error logging in user:', err);
-        alert('Login failed. Please check your credentials and try again.');
+        this.message = 'Invalid username / password combo. Please try again.';
+        console.error('Error logging in user', err);
       },
     });
   }

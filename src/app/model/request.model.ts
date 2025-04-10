@@ -1,3 +1,4 @@
+import { LineItem } from './line-item.model';
 import { User } from './user.model';
 
 export class Request {
@@ -12,7 +13,7 @@ export class Request {
   total: number = 0;
   submittedDate: string = '';
   reasonForRejection: string = '';
-
+  lineitems: LineItem[] = [];
   constructor(
     id: number = 0,
     user: User = new User(),

@@ -15,6 +15,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   userId!: number;
   user!: User;
   subscription!: Subscription;
+  originalPassword: string = '';
   constructor(
     private userSvc: UserService,
     private router: Router,
@@ -29,6 +30,8 @@ export class UserEditComponent implements OnInit, OnDestroy {
       this.subscription = this.userSvc.getById(this.userId).subscribe({
         next: (resp) => {
           this.user = resp;
+          // Store the original password for comparison later
+          this.originalPassword = resp.password;
         },
         error: (err) => {
           console.error('Error fetching user:', err);
@@ -44,7 +47,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   }
 
   saveUser() {
-    this.userSvc.update(this.user).subscribe({
+    this.subscription = this.userSvc.update(this.user).subscribe({
       next: (resp) => {
         this.user = resp;
         console.log('User updated successfully:', this.user);
