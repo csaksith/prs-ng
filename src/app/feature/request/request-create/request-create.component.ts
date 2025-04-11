@@ -18,6 +18,8 @@ export class RequestCreateComponent implements OnInit, OnDestroy {
   newRequest: Request = new Request();
   subscription!: Subscription;
   users!: User[];
+  loggedInUser!: User;
+  isAdmin: boolean = false;
   welcomeMsg!: string;
   deliveryModes: string[] = ['Pickup', 'Mail'];
 

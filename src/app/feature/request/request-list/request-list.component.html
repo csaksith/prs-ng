@@ -58,23 +58,20 @@
               title="Request-Detail"
             />|</a
           >
-          <a routerLink="/request-lines/{{ r.id }}">
+          <a routerLink="/request/lines/{{ r.id }}">
             <img
               src="images/lines.png"
               width="20"
               height="20"
               title="Approve Request"
-              
-            /></a>
-          <a *ngIf="this.isAdmin">|
-            <img
+          /></a>
+          <a *ngIf="this.isAdmin">|<img
               src="images/delete.jpg"
               width="20"
               height="20"
-              title="Delete Request"
+              title="Delete User"
               (click)="delete(r.id)"
-            />
-          </a>
+          /></a>
         </td>
       </tr>
     </tbody>

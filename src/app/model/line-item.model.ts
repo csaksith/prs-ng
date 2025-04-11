@@ -3,15 +3,14 @@ import { Product } from './product.model';
 
 export class LineItem {
   id: number;
-  request: Request;
-  product: Product;
+  request: Request = new Request();
+  product: Product = new Product();
   quantity: number;
-  lineitems: LineItem[] = [];
   constructor(
     id: number = 0,
     request: Request = new Request(),
     product: Product = new Product(),
-    quantity: number = 1
+    quantity: number = 0
   ) {
     this.id = id;
     this.request = request;

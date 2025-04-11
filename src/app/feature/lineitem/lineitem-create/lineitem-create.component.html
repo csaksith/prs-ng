@@ -1,0 +1,42 @@
+<div class="p-4">
+    <span class="fw-bold fst-italic">[{{ title }}] </span>
+    <span> | <a class="return-to-link" routerLink="/request-list">Return to List</a></span>
+    <span
+      style="
+        float: right;
+        padding-right: 30px;
+        font-style: italic;
+        font-weight: bold;
+      "
+      >{{ welcomeMsg }}</span
+    >
+    <table>
+      <tr>
+        <td>Product:</td>
+        <td>
+          <select
+          [(ngModel)]="newLineItem.product"
+          class="rounded"
+          >
+          <option *ngFor="let product of products" [ngValue]="product">{{ product.name }}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Quantity:</td>
+        <td>
+          <input
+            name="quantity"
+            [(ngModel)]="newLineItem.quantity"
+            type="number"
+            min="1"
+            required
+            
+          />
+        </td>
+      </tr>
+    </table>
+    <button (click)="addLineItem()" class="btn btn-sm btn-primary">Create</button> 
+    <a routerLink="/request-lines+requestId" class="btn btn-sm btn-secondary">Cancel</a>
+  </div>
+  

@@ -23,7 +23,9 @@ import { MenuComponent } from './core/menu/menu.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UserLoginComponent } from './feature/user/user-login/user-login.component';
-import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
+import { RequestLinesComponent } from './feature/lineitem/request-lines/request-lines.component';
+// Corrected path to LineitemCreateComponent
+import { LineitemCreateComponent } from './feature/lineitem/lineitem-create/lineitem-create.component';
 
 @NgModule({
   declarations: [
@@ -46,15 +48,11 @@ import { RequestLinesComponent } from './feature/request/request-lines/request-l
     ProductDetailComponent,
     MenuComponent,
     UserLoginComponent,
-    RequestLinesComponent
+    RequestLinesComponent,
+    LineitemCreateComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

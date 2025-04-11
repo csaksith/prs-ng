@@ -1,5 +1,6 @@
 <div class="p-4">
   <span class="fw-bold fst-italic">[{{ title }}] </span>
+
   <span
     style="
       float: right;
@@ -24,42 +25,35 @@
         <td>{{ request.user.firstName + " " + request.user.lastName }}</td>
         <td>{{ request.description }}</td>
         <td>{{ request.status }}</td>
-        <td>{{ request.total | currency }}</td>
+        <td>{{ request.total }}</td>
       </tr>
     </tbody>
   </table>
 
   <span class="fw-bold fst-italic">[{{ LineTitle }}] </span>
+  <!-- <a routerLink="/lineitem-create/{{ requestId }}"> -->
+  <a [routerLink]="['/lineitem-create', requestId]">
+    <img width="20" height="20" src="images/add-icon.png" title="Add New" />
+  </a>
   <table class="table table-striped table-hover mt-4">
     <thead>
       <tr>
         <th>Vendor</th>
         <th>Product</th>
         <th>Quantity</th>
-        <th>Price Each</th>
-        <th>Total</th>
+        <th>Price</th>
+        <th>Line Total</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let li of request.lineitems">
+      <tr *ngFor="let li of lineitems">
         <td>{{ getVendorName(li.product.vendor.id) }}</td>
         <td>{{ li.product.name }}</td>
         <td>{{ li.quantity }}</td>
         <td>{{ li.product.price | currency }}</td>
         <td>{{ li.quantity * li.product.price | currency }}</td>
-        <td>
-          <a *ngIf="isAdmin" [routerLink]="['/lineitem-edit', li.id]">Edit</a> |
-          <a *ngIf="isAdmin" (click)="delete(li.id)">Delete</a>
-        </td>
       </tr>
     </tbody>
   </table>
-
-  <!-- Add line item button -->
-  <!-- <a
-    [routerLink]="['/lineitem-create', request.id]"
-    class="btn btn-sm btn-primary"
-    >Add Line Item</a
-  > -->
 </div>

@@ -56,20 +56,20 @@ export class RequestLinesComponent implements OnInit, OnDestroy {
       // get the line items for the requestId
       this.lineItemSvc.getLinesForRequest(this.requestId).subscribe({
         next: (resp) => {
-          this.request.lineitems = resp;
+          this.lineitems = resp;
         },
         error: (err) => {
           console.error('Error fetching lines:', err);
         },
       });
-      this.vendorSvc.list().subscribe(
-        (resp) => {
+      this.vendorSvc.list().subscribe({
+        next: (resp) => {
           this.vendors = resp;
         },
-        (err) => {
+        error: (err) => {
           console.error('Error fetching vendors:', err);
-        }
-      );
+        },
+      });
     });
   }
 
