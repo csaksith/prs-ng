@@ -43,35 +43,36 @@
         <td>{{ r.submittedDate }}</td>
         <td>{{ r.reasonForRejection }}</td>
         <td>
-          <a *ngIf="this.isAdmin" routerLink="/request-edit/{{ r.id }}">
-            <img
-              src="images/pencil-icon.png"
-              width="20"
-              height="20"
-              title="Edit-Request"
-            />|</a
-          ><a routerLink="/request-detail/{{ r.id }}">
-            <img
-              src="images/details.png"
-              width="20"
-              height="20"
-              title="Request-Detail"
-            />|</a
-          >
-          <a routerLink="/request/lines/{{ r.id }}">
-            <img
-              src="images/lines.png"
-              width="20"
-              height="20"
-              title="Approve Request"
-          /></a>
-          <a *ngIf="this.isAdmin">|<img
-              src="images/delete.jpg"
-              width="20"
-              height="20"
-              title="Delete User"
-              (click)="delete(r.id)"
-          /></a>
+          <div style="display: flex; gap: 5px">
+            <a *ngIf="this.isAdmin" routerLink="/request-edit/{{ r.id }}">
+              <img
+                src="images/pencil-icon.png"
+                width="20"
+                height="20"
+                title="Edit-Request" /></a
+            ><a routerLink="/request-detail/{{ r.id }}">
+              <img
+                src="images/details.png"
+                width="20"
+                height="20"
+                title="Request-Detail"
+            /></a>
+            <a routerLink="/request/lines/{{ r.id }}">
+              <img
+                src="images/lines.png"
+                width="20"
+                height="20"
+                title="Request-Lines"
+            /></a>
+            <a *ngIf="this.isAdmin"
+              ><img
+                src="images/delete.jpg"
+                width="20"
+                height="20"
+                title="Delete-Request"
+                (click)="delete(r.id)"
+            /></a>
+          </div>
         </td>
       </tr>
     </tbody>

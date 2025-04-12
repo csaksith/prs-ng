@@ -1,0 +1,43 @@
+<div class="p-4">
+  <span class="fw-bold fst-italic">[{{ title }}] </span>
+  <p *ngIf="!lineitem">Loading...</p>
+  <div *ngIf="lineitem">
+    <main class="single">
+      <table class="table table-sm">
+        <tr>
+          <td>Product:</td>
+          <td>
+            <select [(ngModel)]="lineitem.product.id" class="rounded">
+              <option *ngFor="let product of products" [ngValue]="product.id">
+                {{ product.name }}
+              </option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Quantity:</td>
+          <td>
+            <input
+              name="quantity"
+              type="number"
+              [(ngModel)]="lineitem.quantity"
+              required
+            />
+          </td>
+        </tr>
+      </table>
+    </main>
+    <span>
+
+      <button (click)="saveLineItem()" class="btn btn-sm btn-primary">
+        Save
+      </button>
+      <a
+        routerLink="/request/lines/{{ requestId }}"
+        class="btn btn-sm btn-secondary"
+        >Cancel</a
+      >
+    </span>
+  </div>
+</div>

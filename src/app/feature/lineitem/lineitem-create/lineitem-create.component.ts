@@ -65,13 +65,17 @@ export class LineitemCreateComponent implements OnInit, OnDestroy {
   }
 
   addLineItem(): void {
+    if (!this.newLineItem.product || !this.newLineItem.product.id) {
+      alert('Please select a product!');
+      return;
+    }
     this.newLineItem.product = { id: this.newLineItem.product.id } as Product;
     this.newLineItem.request = { id: this.requestId } as Request;
     console.log('Payload being sent:', this.newLineItem);
 
     this.subscription = this.lineItemSvc.add(this.newLineItem).subscribe({
       next: () => {
-        this.router.navigateByUrl('/request-lines/' + this.requestId);
+        this.router.navigateByUrl('/request/lines/' + this.requestId);
       },
       error: (err) => {
         console.error('Error adding line item:', err);

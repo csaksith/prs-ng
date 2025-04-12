@@ -19,6 +19,7 @@ import { VendorListComponent } from './feature/vendor/vendor-list/vendor-list.co
 import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 import { RequestLinesComponent } from './feature/lineitem/request-lines/request-lines.component';
 import { LineitemCreateComponent } from './feature/lineitem/lineitem-create/lineitem-create.component';
+import { LineitemEditComponent } from './feature/lineitem/lineitem-edit/lineitem-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/user-login', pathMatch: 'full' }, // redirect to user login
@@ -44,8 +45,8 @@ const routes: Routes = [
   { path: 'product-edit/:id', component: ProductEditComponent },
   { path: 'product-detail/:id', component: ProductDetailComponent },
   // line item
-  // { path: 'lineitem-create/:requestId', component: LineitemCreateComponent },
   { path: 'lineitem-create/:requestId', component: LineitemCreateComponent },
+  { path: 'lineitem-edit/:id', component: LineitemEditComponent },
   // default route
   { path: 'user-login', component: UserLoginComponent }, // login page (for now, just user list)
   { path: '**', redirectTo: 'user-list' }, // wildcard route for a 404 page
