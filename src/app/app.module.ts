@@ -27,6 +27,8 @@ import { RequestLinesComponent } from './feature/lineitem/request-lines/request-
 // Corrected path to LineitemCreateComponent
 import { LineitemCreateComponent } from './feature/lineitem/lineitem-create/lineitem-create.component';
 import { LineitemEditComponent } from './feature/lineitem/lineitem-edit/lineitem-edit.component';
+import { ReviewListComponent } from './feature/request/review-list/review-list.component';
+import { RequestApproveComponent } from './feature/request/request-approve/request-approve.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { LineitemEditComponent } from './feature/lineitem/lineitem-edit/lineitem
     RequestLinesComponent,
     LineitemCreateComponent,
     LineitemEditComponent,
+    ReviewListComponent,
+    RequestApproveComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

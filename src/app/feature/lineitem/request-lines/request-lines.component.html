@@ -70,6 +70,9 @@
       </tr>
     </tbody>
   </table>
+  <div *ngIf="lineitems.length === 0" class="text-danger">
+    No line items yet. Please create a new one!
+  </div>
   <div class="d-flex justify-content-center">
     <button
       type="button"

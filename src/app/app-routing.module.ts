@@ -20,6 +20,8 @@ import { UserLoginComponent } from './feature/user/user-login/user-login.compone
 import { RequestLinesComponent } from './feature/lineitem/request-lines/request-lines.component';
 import { LineitemCreateComponent } from './feature/lineitem/lineitem-create/lineitem-create.component';
 import { LineitemEditComponent } from './feature/lineitem/lineitem-edit/lineitem-edit.component';
+import { ReviewListComponent } from './feature/request/review-list/review-list.component';
+import { RequestApproveComponent } from './feature/request/request-approve/request-approve.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/user-login', pathMatch: 'full' }, // redirect to user login
@@ -39,6 +41,8 @@ const routes: Routes = [
   { path: 'request-edit/:id', component: RequestEditComponent },
   { path: 'request-detail/:id', component: RequestDetailComponent },
   { path: 'request/lines/:id', component: RequestLinesComponent },
+  {path: 'review', component: ReviewListComponent},
+  { path: 'request/approve/:id', component: RequestApproveComponent },
   // product
   { path: 'product-list', component: ProductListComponent },
   { path: 'product-create', component: ProductCreateComponent },
