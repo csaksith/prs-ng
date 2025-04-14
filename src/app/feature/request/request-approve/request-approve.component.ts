@@ -48,11 +48,11 @@ export class RequestApproveComponent implements OnInit {
     });
   }
 
-approveRequest(): void {
+  approveRequest(): void {
     this.requestSvc.approve(this.requestId).subscribe({
       next: (resp) => {
         console.log('Request approved:', resp);
-        this.router.navigate(['/request/review']);
+        this.router.navigate(['/request-list']);
       },
       error: (err) => {
         console.error('Error approving request:', err);
@@ -60,18 +60,16 @@ approveRequest(): void {
     });
   }
 
-rejectRequest(): void {
-  const data = {reasonForRejection: this.reasonForRejection};
-  this.requestSvc.reject(this.requestId, data).subscribe({
-    next: (resp) => {
-      console.log('Request rejected:', resp);
-      this.router.navigate(['/request-list']);
-    },
-    error: (err) => {
-      console.error('Error rejecting request:', err);
-    },
-  });
-
-}
-
+  rejectRequest(): void {
+    const data = { reasonForRejection: this.reasonForRejection };
+    this.requestSvc.reject(this.requestId, data).subscribe({
+      next: (resp) => {
+        console.log('Request rejected:', resp);
+        this.router.navigate(['/request-list']);
+      },
+      error: (err) => {
+        console.error('Error rejecting request:', err);
+      },
+    });
+  }
 }

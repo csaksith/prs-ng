@@ -46,16 +46,17 @@
               width="20"
               height="20"
               title="Edit-User"
-            />|</a
+            /> </a
           ><a routerLink="/user-detail/{{ u.id }}">
             <img
               src="images/details.png"
               width="20"
               height="20"
               title="User-Detail"
-            /> </a
-          ><a *ngIf="this.isAdmin"
-            >|<img
+            />
+          </a> 
+          <a *ngIf="this.isAdmin">
+              <img
               src="images/delete.jpg"
               width="20"
               height="20"

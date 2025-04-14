@@ -1,60 +1,103 @@
 <app-menu></app-menu>
-<div class="p-4">
-  <span class="fw-bold fst-italic">[{{ title }}] </span>
-  <span>
-    | <a class="return-to-link" routerLink="/user-list">Return to List</a></span
-  >
 
-  <table>
-    <tr>
-      <td>Username:</td>
-      <td>
-        <input name="username" [(ngModel)]="newUser.username" type="text" />
-      </td>
-    </tr>
-    <tr>
-      <td>Password:</td>
-      <td>
-        <input name="password" [(ngModel)]="newUser.password" type="text" />
-      </td>
-    </tr>
-    <tr>
-      <td>First Name:</td>
-      <td>
-        <input name="firstName" [(ngModel)]="newUser.firstName" type="text" />
-      </td>
-    </tr>
-    <tr>
-      <td>Last Name:</td>
-      <td>
-        <input name="lastName" [(ngModel)]="newUser.lastName" type="text" />
-      </td>
-    </tr>
-    <tr>
-      <td>Phone Number:</td>
-      <td>
-        <input
-          name="phoneNumber"
-          [(ngModel)]="newUser.phoneNumber"
-          type="text"
-        />
-      </td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td>
-        <input name="email" [(ngModel)]="newUser.email" type="email" />
-      </td>
-    </tr>
-    <tr>
-      <input name="reviewer" [(ngModel)]="newUser.reviewer" type="checkbox" />
-      Reviewer
-    </tr>
-    <tr>
-      <input name="admin" [(ngModel)]="newUser.admin" type="checkbox" />
-      Admin
-    </tr>
-  </table>
-  <button (click)="addUser()" class="btn btn-sm btn-primary">Create</button>
-  <a routerLink="/user-list" class="btn btn-sm btn-secondary">Cancel</a>
+<div class="p-4">
+  <span class="fw-bold fst-italic">[{{ title }}]</span>
+  <span>
+    | <a class="return-to-link" routerLink="/user-list">Return to List</a>
+  </span>
+
+  <form #userForm="ngForm" (ngSubmit)="addUser()">
+    <table>
+      <tr>
+        <td>Username:</td>
+        <td>
+          <input
+            name="username"
+            [(ngModel)]="newUser.username"
+            type="text"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td>
+          <input
+            name="password"
+            [(ngModel)]="newUser.password"
+            type="password"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>First Name:</td>
+        <td>
+          <input name="firstName" [(ngModel)]="newUser.firstName" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>Last Name:</td>
+        <td>
+          <input name="lastName" [(ngModel)]="newUser.lastName" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>Phone Number:</td>
+        <td>
+          <input
+            name="phoneNumber"
+            [(ngModel)]="newUser.phoneNumber"
+            type="text"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td>
+          <input
+            [(ngModel)]="newUser.email"
+            name="email"
+            type="email"
+            required
+            email
+            #emailInput="ngModel"
+          />
+          <div *ngIf="emailInput.invalid && emailInput.touched">
+            <small *ngIf="emailInput.errors?.['required']"
+              >Email is required.</small
+            >
+            <small *ngIf="emailInput.errors?.['email']"
+              >Invalid email format.</small
+            >
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            name="reviewer"
+            [(ngModel)]="newUser.reviewer"
+            type="checkbox"
+          />
+          Reviewer
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input name="admin" [(ngModel)]="newUser.admin" type="checkbox" />
+          Admin
+        </td>
+      </tr>
+    </table>
+
+    <button
+      type="submit"
+      [disabled]="userForm.invalid"
+      class="btn btn-sm btn-primary"
+    >
+      Create
+    </button>
+    <a routerLink="/user-list" class="btn btn-sm btn-secondary">Cancel</a>
+  </form>
 </div>

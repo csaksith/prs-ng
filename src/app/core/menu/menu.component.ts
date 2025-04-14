@@ -14,7 +14,6 @@ export class MenuComponent implements OnInit {
   constructor(private sysSvc: SystemService) {}
   ngOnInit(): void {
     this.reviewer = this.sysSvc.loggedInUser.reviewer;
-    console.log('Reviewer:', this.reviewer);
     this.menuItems = [
       new MenuItem('User', '/user-list', 'User List'),
       new MenuItem('Vendor', '/vendor-list', 'Vendor List'),
@@ -23,9 +22,7 @@ export class MenuComponent implements OnInit {
     ];
 
     if (this.reviewer === true) {
-      this.menuItems.push(
-        new MenuItem('Review', '/review', 'Review List')
-      );
+      this.menuItems.push(new MenuItem('Review', '/review', 'Review List'));
     }
     this.menuItems.push(new MenuItem('Login', '/user-login', 'Login'));
   }

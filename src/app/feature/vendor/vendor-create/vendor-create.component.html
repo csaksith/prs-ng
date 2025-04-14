@@ -1,69 +1,105 @@
 <app-menu></app-menu>
+
 <div class="p-4">
-  <span class="fw-bold fst-italic">[{{ title }}] </span>
+  <span class="fw-bold fst-italic">[{{ title }}]</span>
   <span>
     |
-    <a class="return-to-link" routerLink="/vendor-list">Return to List</a></span
-  >
+    <a class="return-to-link" routerLink="/vendor-list">Return to List</a>
+  </span>
 
-  <table>
-    <tr>
-      <td>Code:</td>
-      <td>
-        <input name="code" type="text" [(ngModel)]="newVendor.code" />
-      </td>
-    </tr>
-    <tr>
-      <td>Name:</td>
-      <td>
-        <input name="name" [(ngModel)]="newVendor.name" type="text" />
-      </td>
-    </tr>
-    <tr>
-      <td>Address:</td>
-      <td>
-        <input name="address" [(ngModel)]="newVendor.address" type="text" />
-      </td>
-    </tr>
-    <tr>
-      <td>City:</td>
-      <td>
-        <input name="city" [(ngModel)]="newVendor.city" type="text" />
-      </td>
-    </tr>
-    <tr>
-      <td>State:</td>
-      <td>
-        <select name="state" class="rounded" [(ngModel)]="newVendor.state">
-          <option *ngFor="let state of State" [value]="state" default="OH">
-            {{ state }}
-          </option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>Zip Code:</td>
-      <td>
-        <input name="zip" type="text" [(ngModel)]="newVendor.zip" />
-      </td>
-    </tr>
-    <tr>
-      <td>Phone Number:</td>
-      <td>
-        <input
-          name="phoneNumber"
-          type="text"
-          [(ngModel)]="newVendor.phoneNumber"
-        />
-      </td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td>
-        <input name="email" type="email" [(ngModel)]="newVendor.email" />
-      </td>
-    </tr>
-  </table>
-  <button (click)="addVendor()" class="btn btn-sm btn-primary">Create</button>
-  <a routerLink="/vendor-list" class="btn btn-sm btn-secondary">Cancel</a>
+  <!-- Wrap this in a form to enable validations -->
+  <form #vendorForm="ngForm" (ngSubmit)="addVendor()">
+    <table>
+      <tr>
+        <td>Code:</td>
+        <td>
+          <input
+            name="code"
+            type="text"
+            [(ngModel)]="newVendor.code"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td>
+          <input
+            name="name"
+            [(ngModel)]="newVendor.name"
+            type="text"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td>
+          <input name="address" [(ngModel)]="newVendor.address" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>City:</td>
+        <td>
+          <input name="city" [(ngModel)]="newVendor.city" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>State:</td>
+        <td>
+          <select name="state" class="rounded" [(ngModel)]="newVendor.state">
+            <option *ngFor="let state of State" [value]="state">
+              {{ state }}
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Zip Code:</td>
+        <td>
+          <input name="zip" type="text" [(ngModel)]="newVendor.zip" />
+        </td>
+      </tr>
+      <tr>
+        <td>Phone Number:</td>
+        <td>
+          <input
+            name="phoneNumber"
+            type="text"
+            [(ngModel)]="newVendor.phoneNumber"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="newVendor.email"
+            required
+            email
+            #emailInput="ngModel"
+          />
+          <div *ngIf="emailInput.invalid && emailInput.touched">
+            <small *ngIf="emailInput.errors?.['required']"
+              >Email is required.</small
+            >
+            <small *ngIf="emailInput.errors?.['email']"
+              >Invalid email format.</small
+            >
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <button
+      type="submit"
+      [disabled]="vendorForm.invalid"
+      class="btn btn-sm btn-primary"
+    >
+      Create
+    </button>
+    <a routerLink="/vendor-list" class="btn btn-sm btn-secondary">Cancel</a>
+  </form>
 </div>
