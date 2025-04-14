@@ -38,7 +38,11 @@ export class RequestLinesComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     this.requestId = this.actRoute.snapshot.params['id'];
-    this.loggedInUser = this.systemSvc.loggedInUser;
+    if (this.systemSvc.loggedInUser) {
+      this.loggedInUser = this.systemSvc.loggedInUser;
+    } else {
+      throw new Error('Logged-in user is null');
+    }
     this.welcomeMsg = `Welcome ${this.loggedInUser.firstName} ${this.loggedInUser.lastName}`;
     this.isAdmin = this.loggedInUser.admin;
     this.loadData(); // Load request and line items
@@ -88,15 +92,20 @@ export class RequestLinesComponent implements OnInit, OnDestroy {
   }
 
   submitForReview(): void {
-  this.requestSvc.submitForReview(this.requestId).subscribe({
-    next:() => {
-      this.loadData(); // Refresh the request data after submission
-    },
-    error: (err) => {
-      console.error('Error submitting request for review:', err);
-    }
-  });
+    this.requestSvc.submitForReview(this.requestId).subscribe({
+      next: () => {
+        this.loadData(); // Refresh the request data after submission
+      },
+      error: (err) => {
+        console.error('Error submitting request for review:', err);
+      },
+    });
   }
+
+  canEdit(): boolean {
+    return this.systemSvc.loggedInUser?.id === this.request?.user?.id;
+  }
+
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }

@@ -26,8 +26,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.productSvc.list().subscribe((resp) => {
       this.products = resp;
-      this.welcomeMsg = `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
-      this.loggedInUser = this.systemSvc.loggedInUser;
+      if (this.systemSvc.loggedInUser) {
+        this.welcomeMsg = `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
+      } else {
+        this.welcomeMsg = 'Welcome, Guest~';
+      }
+      this.loggedInUser = this.systemSvc.loggedInUser ?? ({} as User);
       this.isAdmin = this.loggedInUser.admin;
     });
   }

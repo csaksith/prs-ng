@@ -36,7 +36,11 @@ export class LineitemCreateComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     // check if user is logged in
-    this.loggedInUser = this.systemSvc.loggedInUser;
+    if (this.systemSvc.loggedInUser) {
+      this.loggedInUser = this.systemSvc.loggedInUser;
+    } else {
+      throw new Error('No logged-in user found.');
+    }
     this.welcomeMsg = `Welcome, ${this.loggedInUser.firstName} ${this.loggedInUser.lastName}`;
     this.requestId = +this.actRoute.snapshot.params['requestId'];
 

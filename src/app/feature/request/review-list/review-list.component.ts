@@ -22,7 +22,11 @@ export class ReviewListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loggedInUser = this.systemSvc.loggedInUser;
+    if (this.systemSvc.loggedInUser) {
+      this.loggedInUser = this.systemSvc.loggedInUser;
+    } else {
+      throw new Error('Logged-in user is null');
+    }
     this.isAdmin = this.systemSvc.loggedInUser.admin;
     this.welcomeMsg = `Welcome, ${this.loggedInUser.firstName} ${this.loggedInUser.lastName}~`;
     this.requestSvc.getRequestsForReview(this.loggedInUser.id).subscribe({

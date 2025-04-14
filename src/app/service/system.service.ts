@@ -6,13 +6,14 @@ import { User } from '../model/user.model';
   providedIn: 'root',
 })
 export class SystemService {
-  loggedInUser: User = new User();
+  loggedInUser: User=new User();
+  reviewer: boolean = false;
 
   constructor(private router: Router) {}
 
   checkLogin() {
     // check if user is logged in, if not -> redirect to login page
-    if (this.loggedInUser.id == 0) {
+    if (this.loggedInUser && this.loggedInUser.id === 0) {
       console.log('User not authenticated, redirecting to login page...');
       // redirect to login page
       this.router.navigate(['/user-login']);

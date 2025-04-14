@@ -65,7 +65,7 @@ rejectRequest(): void {
   this.requestSvc.reject(this.requestId, data).subscribe({
     next: (resp) => {
       console.log('Request rejected:', resp);
-      this.router.navigate(['/review']);
+      this.router.navigate(['/request-list']);
     },
     error: (err) => {
       console.error('Error rejecting request:', err);

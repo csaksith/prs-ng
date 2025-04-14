@@ -1,49 +1,62 @@
+<app-menu></app-menu>
 <div class="p-4">
   <span class="fw-bold fst-italic">[{{ title }}] </span>
-  <span> | <a class="return-to-link" routerLink="/product-list">Return to List</a></span>
+  <span>
+    |
+    <a class="return-to-link" routerLink="/product-list"
+      >Return to List</a
+    ></span
+  >
   <table>
-      <tr>
-        <td>Vendor:</td>
-        <td>
-          <select [(ngModel)]="newProduct.vendor" name="vendor">
-            <option *ngFor="let v of vendors" [ngValue]="v">
-              {{ v.name }}
-            </option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>Part Number:</td>
-        <td>
-          <input name="partNumber" [(ngModel)]="newProduct.partNumber" type="text" />
-        </td>
-      </tr>
-      <tr>
-        <td>Name:</td>
-        <td>
-          <input name="name" [(ngModel)]="newProduct.name" type="text" />
-        </td>
-      </tr>
-      <tr>
-        <td>Price:</td>
-        <td>
-          <input name="price" [(ngModel)]="newProduct.price" type="text" />
-        </td>
-      </tr>
-      <tr>
-        <td>Unit:</td>
-        <td>
-          <input name="unit" [(ngModel)]="newProduct.unit" type="text" />
-        </td>
-      </tr>
-      <tr>
-        <td>Photo Path:</td>
-        <td>
-          <input name="photoPath" [(ngModel)]="newProduct.photoPath" type="text" />
-        </td>
-      </tr>
-    </table>
-    <button (click)="addProduct()" class="btn btn-sm btn-primary">Create</button>
-    <a routerLink="/product-list" class="btn btn-sm btn-secondary">Cancel</a>
-
+    <tr>
+      <td>Vendor:</td>
+      <td>
+        <select [(ngModel)]="newProduct.vendor" name="vendor">
+          <option *ngFor="let v of vendors" [ngValue]="v">
+            {{ v.name }}
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Part Number:</td>
+      <td>
+        <input
+          name="partNumber"
+          [(ngModel)]="newProduct.partNumber"
+          type="text"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td>
+        <input name="name" [(ngModel)]="newProduct.name" type="text" />
+      </td>
+    </tr>
+    <tr>
+      <td>Price:</td>
+      <td>
+        <input name="price" [(ngModel)]="newProduct.price" type="text" />
+      </td>
+    </tr>
+    <tr>
+      <td>Unit:</td>
+      <td>
+        <input name="unit" [(ngModel)]="newProduct.unit" type="text" />
+      </td>
+    </tr>
+    <tr>
+      <td>Photo Path:</td>
+      <td>
+        <input
+          name="photoPath"
+          [(ngModel)]="newProduct.photoPath"
+          type="text"
+        />
+      </td>
+    </tr>
+  </table>
+  <button (click)="addProduct()" class="btn btn-sm btn-primary">Create</button>
+  <a routerLink="/product-list" class="btn btn-sm btn-secondary">Cancel</a>
 </div>

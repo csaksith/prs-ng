@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="p-4">
   <span class="fw-bold fst-italic">[{{ title }}] </span>
   <p *ngIf="!vendor">Loading...</p>
@@ -7,55 +8,99 @@
         <tr>
           <td>Code:</td>
           <td>
-            <input name="code" class="rounded" type="text" [(ngModel)]="vendor.code" />
+            <input
+              name="code"
+              class="rounded"
+              type="text"
+              [(ngModel)]="vendor.code"
+            />
           </td>
         </tr>
         <tr>
           <td>Name:</td>
           <td>
-            <input name="name" [(ngModel)]="vendor.name" class="rounded" type="text" />
+            <input
+              name="name"
+              [(ngModel)]="vendor.name"
+              class="rounded"
+              type="text"
+            />
           </td>
         </tr>
         <tr>
           <td>Address:</td>
           <td>
-            <input name="address" [(ngModel)]="vendor.address" class="rounded" type="text" />
+            <input
+              name="address"
+              [(ngModel)]="vendor.address"
+              class="rounded"
+              type="text"
+            />
           </td>
         </tr>
         <tr>
           <td>City:</td>
           <td>
-            <input name="city" [(ngModel)]="vendor.city" class="rounded" type="text" />
+            <input
+              name="city"
+              [(ngModel)]="vendor.city"
+              class="rounded"
+              type="text"
+            />
           </td>
         </tr>
         <tr>
           <td>State:</td>
           <td>
-            <input name="state" [(ngModel)]="vendor.state" class="rounded" type="text" />
+            <input
+              name="state"
+              [(ngModel)]="vendor.state"
+              class="rounded"
+              type="text"
+            />
           </td>
         </tr>
         <tr>
           <td>Zip Code:</td>
           <td>
-            <input name="zip" [(ngModel)]="vendor.zip" class="rounded" type="text" />
+            <input
+              name="zip"
+              [(ngModel)]="vendor.zip"
+              class="rounded"
+              type="text"
+            />
           </td>
         </tr>
         <tr>
           <td>Phone Number:</td>
           <td>
-            <input name="phoneNumber" [(ngModel)]="vendor.phoneNumber" class="rounded" type="text" />
+            <input
+              name="phoneNumber"
+              [(ngModel)]="vendor.phoneNumber"
+              class="rounded"
+              type="text"
+            />
           </td>
         </tr>
         <tr>
           <td>Email:</td>
           <td>
-            <input name="email" [(ngModel)]="vendor.email" class="rounded" type="email" />
+            <input
+              name="email"
+              [(ngModel)]="vendor.email"
+              class="rounded"
+              type="email"
+            />
           </td>
         </tr>
       </table>
     </main>
     <span
-      ><button type="button" (click)="saveVendor()" class="btn btn-sm btn-primary">
+      ><button
+        type="button"
+        (click)="saveVendor()"
+        class="btn btn-sm btn-primary"
+      >
         Save
       </button></span
     >

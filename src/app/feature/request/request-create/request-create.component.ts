@@ -32,7 +32,11 @@ export class RequestCreateComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // check if user is logged in
-    this.newRequest.user = this.systemSvc.loggedInUser;
+    if (this.systemSvc.loggedInUser) {
+      this.newRequest.user = this.systemSvc.loggedInUser;
+    } else {
+      console.error('Logged-in user is null');
+    }
     this.welcomeMsg = `Welcome, ${this.newRequest.user.firstName} ${this.newRequest.user.lastName}`;
 
     // populate users

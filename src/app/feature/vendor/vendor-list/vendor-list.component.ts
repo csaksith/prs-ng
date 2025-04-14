@@ -24,8 +24,12 @@ export class VendorListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.vendorSvc.list().subscribe((resp) => {
       this.vendors = resp;
-      this.welcomeMsg = `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
-      this.loggedInUser = this.systemSvc.loggedInUser;
+      if (this.systemSvc.loggedInUser) {
+        this.welcomeMsg = `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
+      } else {
+        this.welcomeMsg = 'Welcome, Guest~';
+      }
+      this.loggedInUser = this.systemSvc.loggedInUser!;
       this.isAdmin = this.loggedInUser.admin;
     });
   }

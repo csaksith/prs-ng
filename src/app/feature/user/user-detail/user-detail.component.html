@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div *ngIf="user" class="component">
   <section class="heading">
     <span class="fw-bold fst-italic">[{{ title }}] </span>
@@ -107,8 +108,8 @@
         routerLink="/user-edit/{{ user.id }}"
         class="btn btn-sm btn-warning"
         >Edit</a
-      > </span
-    >
+      >
+    </span>
     <span>
       <button
         *ngIf="this.isAdmin"

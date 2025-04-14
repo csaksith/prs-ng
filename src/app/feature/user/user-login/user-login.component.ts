@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../model/user.model';
 import { UserService } from '../../../service/user.service';
 import { SystemService } from '../../../service/system.service';
+import { MenuComponent } from '../../../core/menu/menu.component';
 @Component({
   selector: 'app-user-login',
   standalone: false,
@@ -42,6 +43,7 @@ export class UserLoginComponent implements OnInit, OnDestroy {
         this.user = resp;
         // store the user in the system service
         this.systemSvc.loggedInUser = resp;
+    
         console.log('User logged in successfully. Welcome ', this.user);
         // navigate to the user list page
         this.router.navigateByUrl('/user-list');
@@ -53,4 +55,6 @@ export class UserLoginComponent implements OnInit, OnDestroy {
       },
     });
   }
+
+  
 }

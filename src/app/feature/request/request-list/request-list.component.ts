@@ -25,8 +25,12 @@ export class RequestListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.requestSvc.list().subscribe((resp) => {
       this.requests = resp;
-      this.welcomeMsg = `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
-      this.loggedInUser = this.systemSvc.loggedInUser;
+      if (this.systemSvc.loggedInUser) {
+        this.welcomeMsg = `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
+      } else {
+        this.welcomeMsg = 'Welcome, Guest~';
+      }
+      this.loggedInUser = this.systemSvc.loggedInUser ?? ({} as User);
       this.isAdmin = this.loggedInUser.admin;
     });
   }

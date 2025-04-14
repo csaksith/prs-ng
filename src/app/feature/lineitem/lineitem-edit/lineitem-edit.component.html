@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="p-4">
   <span class="fw-bold fst-italic">[{{ title }}] </span>
   <p *ngIf="!lineitem">Loading...</p>
@@ -29,7 +30,6 @@
       </table>
     </main>
     <span>
-
       <button (click)="saveLineItem()" class="btn btn-sm btn-primary">
         Save
       </button>

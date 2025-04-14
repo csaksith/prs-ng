@@ -1,6 +1,12 @@
+<app-menu></app-menu>
 <div class="p-4">
   <span class="fw-bold fst-italic">[{{ title }}] </span>
-  <span> | <a class="return-to-link" routerLink="/request-list">Return to List</a></span>
+  <span>
+    |
+    <a class="return-to-link" routerLink="/request-list"
+      >Return to List</a
+    ></span
+  >
   <span
     style="
       float: right;
@@ -20,7 +26,8 @@
           readonly
         /> -->
         <input
-          [value]="newRequest.user.firstName + ' ' + newRequest.user.lastName" class="rounded"
+          [value]="newRequest.user.firstName + ' ' + newRequest.user.lastName"
+          class="rounded"
           style="background-color: rgb(218, 218, 218)"
           readonly
         />
@@ -71,6 +78,6 @@
       </td>
     </tr>
   </table>
-  <button (click)="addRequest()" class="btn btn-sm btn-primary">Create</button> 
+  <button (click)="addRequest()" class="btn btn-sm btn-primary">Create</button>
   <a routerLink="/request-list" class="btn btn-sm btn-secondary">Cancel</a>
 </div>

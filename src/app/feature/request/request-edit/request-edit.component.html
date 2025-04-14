@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="p-4">
   <span class="fw-bold fst-italic">[{{ title }}] </span>
   <p *ngIf="!request">Loading...</p>
@@ -7,57 +8,70 @@
         <tr>
           <td>User:</td>
           <td>
-            <select
-              [(ngModel)]="request.user" name="user"
-              class="rounded"
-              [compareWith]="compUser"
-            >
-              <option *ngFor="let u of users" [ngValue]="u">
-                {{ u.username }}
-              </option>
-            </select>
+            <input
+            [value]="request.user.firstName + ' ' + request.user.lastName"
+            class="rounded"
+            style="background-color: rgb(218, 218, 218)"
+            readonly
+          />
           </td>
         </tr>
 
         <tr>
-            <td>Description:</td>
-            <td>
-              <input name="description" type="text" [(ngModel)]="request.description" required/>
-            </td>
+          <td>Description:</td>
+          <td>
+            <input
+              name="description"
+              type="text"
+              [(ngModel)]="request.description"
+              required
+            />
+          </td>
         </tr>
 
         <tr>
-            <td>Justification:</td>
-            <td>
-              <input name="justification" type="text" [(ngModel)]="request.justification" required/>
-            </td>
+          <td>Justification:</td>
+          <td>
+            <input
+              name="justification"
+              type="text"
+              [(ngModel)]="request.justification"
+              required
+            />
+          </td>
         </tr>
 
         <tr>
-            <td>Date Needed:</td>
-            <td>
-              <input name="dateNeeded" type="date" [(ngModel)]="request.dateNeeded" required/>
-            </td>
+          <td>Date Needed:</td>
+          <td>
+            <input
+              name="dateNeeded"
+              type="date"
+              [(ngModel)]="request.dateNeeded"
+              required
+            />
+          </td>
         </tr>
 
         <tr>
-            <td>Delivery Mode:</td>
-            <td>
-              <select 
-                [(ngModel)]="request.deliveryMode" name="deliveryMode"
-                class="rounded">
-               <option *ngFor="let dm of deliveryModes" [ngValue]="dm">
+          <td>Delivery Mode:</td>
+          <td>
+            <select
+              [(ngModel)]="request.deliveryMode"
+              name="deliveryMode"
+              class="rounded"
+            >
+              <option *ngFor="let dm of deliveryModes" [ngValue]="dm">
                 {{ dm }}
               </option>
-              </select>
-            </td>
+            </select>
+          </td>
         </tr>
-
       </table>
     </main>
     <span>
       <button (click)="saveRequest()" class="btn btn-sm btn-primary">
-        Save Request
+        Save
       </button>
       <a routerLink="/request-list" class="btn btn-sm btn-secondary">Cancel</a>
     </span>

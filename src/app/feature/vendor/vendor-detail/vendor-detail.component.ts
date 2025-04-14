@@ -35,8 +35,12 @@ export class VendorDetailComponent implements OnInit, OnDestroy {
       this.subscription = this.vendorSvc.getById(this.vendorId).subscribe({
         next: (resp) => {
           this.vendor = resp;
-          this.welcomeMsg=`Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
-          this.loggedInUser = this.systemSvc.loggedInUser;
+          if (this.systemSvc.loggedInUser) {
+            this.welcomeMsg = `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
+          } else {
+            this.welcomeMsg = 'Welcome, Guest~';
+          }
+          this.loggedInUser = this.systemSvc.loggedInUser!;
           this.isAdmin = this.loggedInUser.admin;
         },
         error: (err) => {

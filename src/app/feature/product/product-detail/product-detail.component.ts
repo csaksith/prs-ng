@@ -36,8 +36,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         // corrected service call from userSvc to productSvc
         next: (resp) => {
           this.product = resp;
-          this.welcomeMsg = `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
-          this.loggedInUser = this.systemSvc.loggedInUser;
+          if (this.systemSvc.loggedInUser) {
+            this.welcomeMsg = `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
+          } else {
+            this.welcomeMsg = 'Welcome, Guest~';
+          }
+          this.loggedInUser = this.systemSvc.loggedInUser || {} as User;
           this.isAdmin = this.loggedInUser.admin;
         },
         error: (err) => {

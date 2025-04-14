@@ -1,7 +1,13 @@
+<app-menu></app-menu>
 <div *ngIf="vendor" class="component">
   <section class="heading">
     <span class="fw-bold fst-italic">[{{ title }}] </span>
-    <span> | <a routerLink="/vendor-list">Return to List</a></span>
+    <span>
+      |
+      <a class="return-to-link" routerLink="/vendor-list"
+        >Return to List</a
+      ></span
+    >
   </section>
   <main class="single">
     <table class="table table-sm">

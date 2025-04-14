@@ -34,8 +34,14 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       this.subscription = this.userSvc.getById(this.userId).subscribe({
         next: (resp) => {
           this.user = resp;
-          this.welcomeMsg=`Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~`;
-          this.loggedInUser = this.systemSvc.loggedInUser;
+          this.welcomeMsg = this.systemSvc.loggedInUser 
+            ? `Welcome, ${this.systemSvc.loggedInUser.firstName} ${this.systemSvc.loggedInUser.lastName}~` 
+            : 'Welcome, Guest~';
+          if (this.systemSvc.loggedInUser) {
+            this.loggedInUser = this.systemSvc.loggedInUser;
+          } else {
+            throw new Error('Logged-in user is null');
+          }
           this.isAdmin = this.loggedInUser.admin;
         },
         error: (err) => {

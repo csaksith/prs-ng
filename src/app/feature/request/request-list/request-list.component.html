@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="p-4">
   <section class="heading">
     <span class="fw-bold fst-italic">[{{ title }}] </span>
@@ -30,51 +31,53 @@
       <th>Actions</th>
     </thead>
     <tbody>
-      <tr *ngFor="let r of requests">
-        <td>{{ r.id }}</td>
-        <td>{{ r.user.id }}</td>
-        <td>{{ r.requestNumber }}</td>
-        <td>{{ r.description }}</td>
-        <td>{{ r.justification }}</td>
-        <td>{{ r.dateNeeded }}</td>
-        <td>{{ r.deliveryMode }}</td>
-        <td>{{ r.status }}</td>
-        <td>{{ r.total | currency }}</td>
-        <td>{{ r.submittedDate }}</td>
-        <td>{{ r.reasonForRejection }}</td>
-        <td>
-          <div style="display: flex; gap: 5px">
-            <a *ngIf="this.isAdmin" routerLink="/request-edit/{{ r.id }}">
-              <img
-                src="images/pencil-icon.png"
-                width="20"
-                height="20"
-                title="Edit-Request" /></a
-            ><a routerLink="/request-detail/{{ r.id }}">
-              <img
-                src="images/details.png"
-                width="20"
-                height="20"
-                title="Request-Detail"
-            /></a>
-            <a routerLink="/request/lines/{{ r.id }}">
-              <img
-                src="images/lines.png"
-                width="20"
-                height="20"
-                title="Request-Lines"
-            /></a>
-            <a *ngIf="this.isAdmin"
-              ><img
-                src="images/delete.jpg"
-                width="20"
-                height="20"
-                title="Delete-Request"
-                (click)="delete(r.id)"
-            /></a>
-          </div>
-        </td>
-      </tr>
+      <ng-container *ngIf="requests">
+        <tr *ngFor="let r of requests">
+          <td>{{ r.id }}</td>
+          <td>{{ r.user.id }}</td>
+          <td>{{ r.requestNumber }}</td>
+          <td>{{ r.description }}</td>
+          <td>{{ r.justification }}</td>
+          <td>{{ r.dateNeeded }}</td>
+          <td>{{ r.deliveryMode }}</td>
+          <td>{{ r.status }}</td>
+          <td>{{ r.total | currency }}</td>
+          <td>{{ r.submittedDate }}</td>
+          <td>{{ r.reasonForRejection }}</td>
+          <td>
+            <div style="display: flex; gap: 5px">
+              <a *ngIf="this.isAdmin" routerLink="/request-edit/{{ r.id }}">
+                <img
+                  src="images/pencil-icon.png"
+                  width="20"
+                  height="20"
+                  title="Edit-Request" /></a
+              ><a routerLink="/request-detail/{{ r.id }}">
+                <img
+                  src="images/details.png"
+                  width="20"
+                  height="20"
+                  title="Request-Detail"
+              /></a>
+              <a routerLink="/request/lines/{{ r.id }}">
+                <img
+                  src="images/lines.png"
+                  width="20"
+                  height="20"
+                  title="Request-Lines"
+              /></a>
+              <a *ngIf="this.isAdmin"
+                ><img
+                  src="images/delete.jpg"
+                  width="20"
+                  height="20"
+                  title="Delete-Request"
+                  (click)="delete(r.id)"
+              /></a>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
 </div>
